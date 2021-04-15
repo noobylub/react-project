@@ -5,7 +5,7 @@ const placeRoutes = require("../controller/place-controller")
 
 
 
-router.get("/getPlace/:id", placeRoutes.getPlaceID );
+router.get("/get-place/:id", placeRoutes.getPlaceID );
 
 
 

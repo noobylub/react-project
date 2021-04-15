@@ -5,12 +5,18 @@ const router = express.Router();
 const userRoutes = require("../controller/user-controller");
 const { route } = require("./route-place");
 
+
+
+
+
+
 router.get("/getUser/:id", userRoutes.getUserID);
 router.post(
   "/signup",
   [
     check("image").not().isEmpty(),
-    check("names").not().isEmpty(),
+    check("name").not().isEmpty(),
+    
     check("password").isLength({ min: 3 }),
     check("placeCount").custom((value) => {
       return value >= 0;

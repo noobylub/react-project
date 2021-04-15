@@ -1,92 +1,69 @@
 const error = require("../models/HTTPError");
-const { all } = require("../routes/route-place");
+const mongoose = require('mongoose')
 const { validationResult } = require("express-validator");
-//The users and its methods
-const users = [
-  {
-    id: 1234,
-    image: "https://miro.medium.com/max/785/0*Ggt-XwliwAO6QURi.jpg",
-    name: "Agus",
-    placeCount: 10,
-    password: "oRANGE",
-    home: {
-      longitude: 49.301794335391556,
-      latitude: 25.139696918328024,
-    },
-  },
-  {
-    id: 12345,
-    image: "https://miro.medium.com/max/785/0*Ggt-XwliwAO6QURi.jpg",
-    name: "happy kid hello",
-    placeCount: 10,
-    password: "12333",
-    home: {
-      longitude: 105.60934978644092,
-      latitude: -5.620377696484667,
-    },
-  },
-];
+const User = require("../models/user");
 
 //get user by id
 const getUserID = (req, res, next) => {
-  const oneUser = users.find((user) => {
-    return user.id == req.params.id;
+  User.findById(req.params.id, (err, usr) => {
+    if (err) {
+      return next(
+        new error("Unable to retrieve users, something sus here buddy", 422)
+      );
+    } else {
+      res.json({ user: usr.toObject({ getters: true }) });
+    }
   });
-  if (!oneUser) {
-    return next(new error("User is not found", 404));
-  }
-  res.json(oneUser);
 };
 exports.getUserID = getUserID;
 
 //create new place
 const createUser = (req, res, next) => {
-  const { id, image, names, placeCount, password, coord } = req.body;
-  if (
-    users.find((user) => {
-      return user.name == names;
-    })
-  ) {
-    return next(
-      new error("Username already used, please use another one", 422)
-    );
-  }
+  
+
+  const { image, name, placeCount, password, coord } = req.body;
   if (!validationResult(req).isEmpty()) {
-    return next(new error("You input something here buddy", 422));
+    return next(new error("Please input something what the hell", 422));
   }
-  users.push({
-    id,
+  const newUser = User({
     image,
-    name: names,
+    name,
     placeCount,
     password,
     home: {
-      latitude: coord.lat,
-      longitude: coord.long,
+      lat: coord.lat,
+      long: coord.long,
     },
+    places : []
+  });
+  newUser.save((err) => {
+    if (err) {
+      return next(new error("Something happened here buddy IDK tho lol", 422));
+    } else {
+      res.json({ user: newUser.toObject({ getters: true }) });
+    }
   });
 };
 exports.createUser = createUser;
 
 //login
-const login = (req, res, next) => {
+const login = async (req, res, next) => {
   const { name, password } = req.body;
   if (!validationResult(req).isEmpty()) {
     return next(new error("Please input something what the hell", 422));
   }
-  const user = users.find((user) => {
-    return user.name == name;
-  });
-
-  if (!user || user.password != password) {
-    return next(new error("Must've put something wrong please try again", 422));
+   const user = await User.findOne({name:name});
+  if(user&&user.password==password){
+    res.json({message:"Succesfully logged in"})
   }
-
-  res.json({ message: "login succesfull", user: user.name });
+  else{
+    return next(new error("Incorrect inputs", 422))
+  }
 };
 exports.login = login;
 
-const allUsers = (req, res, next) => {
-  res.json(users);
+const allUsers = async (req, res, next) => {
+ const allUsers = await User.find({});
+ res.json({allusers : allUsers.map(user => user.toObject({getters:true}))})
 };
 exports.allUsers = allUsers;
