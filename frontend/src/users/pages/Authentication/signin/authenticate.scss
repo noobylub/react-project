@@ -1,0 +1,54 @@
+@import "../../../../shared/components/stylish";
+@import "../../../../shared/components/color.scss";
+
+.Authenticate {
+  @include displayCenter();
+  .content {
+    @include displayCenter();
+    background-color: $primary-color;
+    padding: 30px 200px 200px ;
+    margin-top: 10%;
+    border-radius: 20px;
+    box-shadow: 10px 15px 23px 8px rgba(0,0,0,0.75);
+    transition: 1s;
+    &:hover{
+      
+      box-shadow:  10px 15px 23px 8px rgba(184,179,154,1);
+    }
+    @include fontStyle();
+    .form {
+      @include displayCenter();
+    }
+    .data {
+      margin: 20px;
+      @include displayCenter();
+      .input{
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+//basically for the buttons
+.logInSubmit {
+  background-color: white;
+  padding: 5px 30px;
+  font-weight: 300;
+  &:hover{
+    cursor: pointer;
+  }
+  transition: 1s;
+}
+
+.signup{
+  margin-top: 50px;
+  button{
+    background-color: $secondary-color;
+    padding: 10px 30px;
+    color: white;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}
+

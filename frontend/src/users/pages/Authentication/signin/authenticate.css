@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap");
+h1, h2, h3, h4, p {
+  font-family: 'Della Respira', serif;
+}
+
+.Authenticate {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Authenticate .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #B8B39A;
+  padding: 30px 200px 200px;
+  margin-top: 10%;
+  border-radius: 20px;
+  -webkit-box-shadow: 10px 15px 23px 8px rgba(0, 0, 0, 0.75);
+          box-shadow: 10px 15px 23px 8px rgba(0, 0, 0, 0.75);
+  -webkit-transition: 1s;
+  transition: 1s;
+  font-family: 'Source Code Pro', monospace;
+  font-weight: 600;
+}
+
+.Authenticate .content:hover {
+  -webkit-box-shadow: 10px 15px 23px 8px #b8b39a;
+          box-shadow: 10px 15px 23px 8px #b8b39a;
+}
+
+.Authenticate .content .form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Authenticate .content .data {
+  margin: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.Authenticate .content .data .input {
+  font-size: 20px;
+}
+
+.logInSubmit {
+  background-color: white;
+  padding: 5px 30px;
+  font-weight: 300;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.logInSubmit:hover {
+  cursor: pointer;
+}
+
+.signup {
+  margin-top: 50px;
+}
+
+.signup button {
+  background-color: #4F454E;
+  padding: 10px 30px;
+  color: white;
+}
+
+.signup button:hover {
+  cursor: pointer;
+}
+/*# sourceMappingURL=authenticate.css.map */

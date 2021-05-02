@@ -1,0 +1,11 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200&display=swap');
+@mixin fontStyle{
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 600;
+}
+@mixin displayCenter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

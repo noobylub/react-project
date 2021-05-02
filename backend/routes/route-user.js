@@ -18,9 +18,7 @@ router.post(
     check("name").not().isEmpty(),
     
     check("password").isLength({ min: 3 }),
-    check("placeCount").custom((value) => {
-      return value >= 0;
-    }),
+   
   ],
   userRoutes.createUser
 );
