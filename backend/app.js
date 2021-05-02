@@ -2,10 +2,10 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-
+//sets up the URL 
 const url =
   "mongodb+srv://user1:123@reflection.vwvvy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-
+//uses routers in another file
 const places = require("./routes/route-place");
 const users = require("./routes/route-user");
 
